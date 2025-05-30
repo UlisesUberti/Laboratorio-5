@@ -39,8 +39,8 @@ SPDX-License-Identifier: MIT
 /**
  * @brief Funcion cociente
  *
- * @param a
- * @param b
+ * @param a int
+ * @param b int
  * @return int cociente entre dos enteros
  */
 int Division_Operation(int a, int b);
@@ -59,13 +59,10 @@ int Division_Operation(int a, int b) {
 int main(void) {
     // declaro una variable en la cual se almacenara el resultado
     int result;
-    printf("INICIA EL MAIN \n");
     calculator_t calculadora = Calculator_Create();
 
     // Con la funcion de agregar las operaciones le digo cuales agregar, en este caso suma resta y multiplicacion
-    printf(" AGREGA LA PRIMERA OPERACION EN EL MAIN \n");
     Calculator_Add_Operation(calculadora, '-', Substract_Operation);
-    printf(" CALCULAMOS EL PRIMER VALOR EN EL MAIN\n");
     result = Calcule_Calculator(calculadora, "22-22");
     printf("El resultado de la resta es: %d \n", result);
 
