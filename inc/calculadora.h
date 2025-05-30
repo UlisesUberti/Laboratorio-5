@@ -40,40 +40,76 @@ extern "C" {
 
 /* === Public data type declarations =============================================================================== */
 
-// Primero declaro un objeto llamado calculadora --> La calculadora sera un objeto
+/**
+ * @brief objeto calculadora
+ *
+ */
 typedef struct calculator_s * calculator_t;
 
-// Ahora declaro la interface de las funciones -> Recibiran dos enteros y devolveran 1 solo
+/**
+ * @brief Puntero a funcion (Funcion de Callback)
+ *
+ */
 typedef int (*operation_func_t)(int, int);
-// Es una funcion callback --> puntero a funcion
-// representa la tabla dinamica donde se encontraran las funciones a realizar
 
 /* === Public variable declarations ================================================================================ */
 
 /* === Public function declarations ================================================================================ */
 
-// Una funcion para crear la calculadora en el programa principal
+/**
+ * @brief Funcion para crear la estructura del objeto calculadora
+ *
+ * @return calculator_t
+ */
 calculator_t Calculator_Create(void);
 
-// Declaro una funcion que agregue la operacion utilizar segun el operador
+/**
+ * @brief Funcion para agregar operaciones en la calculadora
+ *
+ * @param calculator puntero a objeto calculadora
+ * @param op operando
+ * @param Function Funcion a realizar (Suma, Resta, Division, ...)
+ * @return true Si la agrego
+ * @return false Si no la agrego
+ */
 bool Calculator_Add_Operation(calculator_t calculator, char op, operation_func_t Function);
-// recibe la calculadora creada, la cadena con la operacion, y el puntero a la funcion de Callback
 
-// declaro una funcion que sume
+/**
+ * @brief Funcion que permite que la calculadora entregue un valor acorde a la operacion
+ *
+ * @param calculator puntero a objeto calculadora
+ * @param expression cadena ingresada (int-char-int)
+ * @return int retorna el resultado de la operacion
+ */
+int Calcule_Calculator(calculator_t calculator, const char expression[]);
 
+/**
+ * @brief Operacion Suma
+ *
+ * @param a Entero a
+ * @param b Entero b
+ * @return int Entero suma de a y b
+ */
 int Add_Operation(int a, int b);
 
-// Declaro una funcion que reste
-
+/**
+ * @brief Operacion resta
+ *
+ * @param a
+ * @param b
+ * @return int
+ */
 int Substract_Operation(int a, int b);
 
-// Declaro una funcion que realice la operacion deseada
-int Calcule_Calculator(calculator_t calculator, const char expression[]);
-// recibe el objeto y la cadena con la operacion
-// producto
+/**
+ * @brief Operacion producto
+ *
+ * @param a
+ * @param b
+ * @return int
+ */
 int Dot_Operation(int a, int b);
-// division
-int Division_Operation(int a, int b);
+
 /* === End of conditional blocks =================================================================================== */
 
 #ifdef __cplusplus

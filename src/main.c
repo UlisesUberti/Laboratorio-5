@@ -36,26 +36,56 @@ SPDX-License-Identifier: MIT
 
 /* === Private function declarations =============================================================================== */
 
+/**
+ * @brief Funcion cociente
+ *
+ * @param a
+ * @param b
+ * @return int cociente entre dos enteros
+ */
+int Division_Operation(int a, int b);
+
 /* === Private variable definitions ================================================================================ */
 
 /* === Public variable definitions ================================================================================= */
 
 /* === Private function definitions ================================================================================ */
 
-// definimos la funcion main
+// Agrego una nueva operacion en la calculadora
+int Division_Operation(int a, int b) {
+    return a / b;
+}
 
 int main(void) {
-    int result; // declaro una variable en la cual se alamcenara el resultado
+    // declaro una variable en la cual se almacenara el resultado
+    int result;
+    printf("INICIA EL MAIN \n");
     calculator_t calculadora = Calculator_Create();
 
     // Con la funcion de agregar las operaciones le digo cuales agregar, en este caso suma resta y multiplicacion
+    printf(" AGREGA LA PRIMERA OPERACION EN EL MAIN \n");
     Calculator_Add_Operation(calculadora, '-', Substract_Operation);
+    printf(" CALCULAMOS EL PRIMER VALOR EN EL MAIN\n");
     result = Calcule_Calculator(calculadora, "22-22");
-    printf("El resultado de la resta es: %d", result);
+    printf("El resultado de la resta es: %d \n", result);
+
+    Calculator_Add_Operation(calculadora, '+', Add_Operation);
+    result = Calcule_Calculator(calculadora, "3+3");
+    printf("El resultado de la suma es: %d \n", result);
 
     Calculator_Add_Operation(calculadora, '+', Add_Operation);
     result = Calcule_Calculator(calculadora, "22+22");
-    printf("El resultado de la suma es: %d", result);
+    printf("El resultado de la suma es: %d \n", result);
+
+    Calculator_Add_Operation(calculadora, 'x', Dot_Operation);
+    result = Calcule_Calculator(calculadora, "22x22");
+    printf("El resultado del producto es: %d \n", result);
+
+    Calculator_Add_Operation(calculadora, '/', Division_Operation);
+    result = Calcule_Calculator(calculadora, "22/22 ");
+    printf("El resultado de la division es: %d \n", result);
+
+    return 0;
 }
 
 /* === Public function implementation ============================================================================== */
